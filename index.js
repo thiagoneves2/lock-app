@@ -8,8 +8,3 @@ import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
 
-
-// register to react native web
-AppRegistry.runApplication('App', {
-    rootTag: document.getElementById('root'),
-  });
