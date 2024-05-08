@@ -6,6 +6,11 @@
  */
 
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import LocksScreen from './screens/Locks';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -24,6 +29,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+const Tab = createBottomTabNavigator();
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -64,7 +71,19 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar
+      <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Perfil" component={ProfileScreen} />
+        <Tab.Screen name="Fechaduras" component={LocksScreen} />
+      </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaView>
+  );
+}
+
+/*----------------------- OLD INDEX -----------------------
+<StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
@@ -92,9 +111,7 @@ function App(): React.JSX.Element {
           <LearnMoreLinks />
         </View>
       </ScrollView>
-    </SafeAreaView>
-  );
-}
+*/
 
 const styles = StyleSheet.create({
   sectionContainer: {
